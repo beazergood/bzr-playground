@@ -63,7 +63,7 @@ export default class HomePage {
       slug: 'f1-parallels',
       title: 'Racing Through Code: F1 Parallels in Web Development',
       description: 'Discovering surprising parallels between Formula 1 racing and web development - from async pit stops to caching DRS zones, team radio observability, and marginal gains philosophy.',
-      date: new Date('2024-01-15'),
+      date: new Date('2025-06-30'),
       interactive: true
     }
   ];

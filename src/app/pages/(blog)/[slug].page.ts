@@ -592,7 +592,7 @@ monitoring.warn('High CPU usage');         // "Lift and coast!"</code></pre>
 export default class BlogPostPage implements OnInit {
   post = {
     title: 'Racing Through Code: F1 Parallels in Web Development',
-    date: new Date('2024-01-15'),
+    date: new Date('2025-06-30'),
     description: 'Discovering surprising parallels between Formula 1 racing and web development - from async pit stops to caching DRS zones, team radio observability, and marginal gains philosophy.',
     interactive: true
   };
