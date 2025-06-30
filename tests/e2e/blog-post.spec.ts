@@ -28,13 +28,20 @@ test.describe('Blog Post Page', () => {
   });
 
   test('should render markdown content properly', async ({ page }) => {
-    // Check for section headings (we use h2 with .section-heading class)
-    const headingCount = await page.locator('h2.section-heading').count();
-    expect(headingCount).toBeGreaterThan(0);
+    // Check for section headings using text content since they have emojis
+    await expect(page.getByText('The Async Nature of Pit Stops')).toBeVisible();
+    await expect(page.getByText('DRS Zones = Strategic Caching')).toBeVisible();
+    await expect(page.getByText('Team Radio = Observability')).toBeVisible();
+    await expect(page.getByText('The Philosophy: Marginal Gains')).toBeVisible();
+    await expect(page.getByText('The Podium Celebration')).toBeVisible();
     
     // Check that we have paragraphs of content
     const paragraphCount = await page.locator('p').count();
-    expect(paragraphCount).toBeGreaterThan(0);
+    expect(paragraphCount).toBeGreaterThan(5);
+    
+    // Check for code blocks
+    const codeBlockCount = await page.locator('.code-block').count();
+    expect(codeBlockCount).toBeGreaterThan(0);
   });
 
   test('should be responsive on mobile', async ({ page }) => {

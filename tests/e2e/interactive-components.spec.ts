@@ -28,17 +28,20 @@ test.describe('Interactive F1 Components', () => {
       
       await button.click();
       
-      // Should switch to asynchronous mode
-      await expect(page.getByRole('heading', { name: 'Asynchronous Programming' })).toBeVisible();
-      await expect(page.getByText('Promise.all')).toBeVisible();
-      await expect(page.getByText('Parallel execution')).toBeVisible();
+      // Should switch to asynchronous mode within the pit stop component
+      const pitStopContainer = page.locator('.pit-stop-container');
+      await expect(pitStopContainer.getByRole('heading', { name: 'Asynchronous Programming' })).toBeVisible();
+      await expect(pitStopContainer.getByText('Parallel execution')).toBeVisible();
+      await expect(pitStopContainer.getByText('Much faster pit stop!')).toBeVisible();
       
       // Button text should change
       await expect(page.getByRole('button', { name: /Resume Race/i })).toBeVisible();
     });
 
     test('should animate car position during pit stop', async ({ page }) => {
-      const car = page.locator('text=🏎️').first();
+      // Target the specific car within the pit stop component
+      const pitStopContainer = page.locator('.pit-stop-container');
+      const car = pitStopContainer.locator('.car');
       
       // Get initial position
       const initialPosition = await car.boundingBox();
@@ -52,8 +55,8 @@ test.describe('Interactive F1 Components', () => {
       // Get new position
       const newPosition = await car.boundingBox();
       
-      // Position should have changed
-      expect(newPosition?.x).not.toBe(initialPosition?.x);
+      // Position should have changed (car moves to pit)
+      expect(newPosition?.y).not.toBe(initialPosition?.y);
     });
 
     test('should show pit crew when in pit stop mode', async ({ page }) => {
@@ -106,7 +109,9 @@ test.describe('Interactive F1 Components', () => {
     });
 
     test('should show checkered flag and chart emoji', async ({ page }) => {
-      await expect(page.locator('text=🏁📊')).toBeVisible();
+      const raceStrategyContainer = page.locator('.race-strategy');
+      await expect(raceStrategyContainer.locator('text=🏁')).toBeVisible();
+      await expect(raceStrategyContainer.locator('text=📊')).toBeVisible();
     });
   });
 
