@@ -76,13 +76,13 @@ import { RaceStrategyComponent } from '../../components/interactive/f1/race-stra
               <span class="text-2xl">⚡</span>
               Race Lap Implementation
             </h3>
-            <pre class="code-block"><code>async function raceLap(driver: Driver): Promise&lt;LapResult&gt; {
-  if (driver.needsPitStop()) {
+            <pre class="code-block"><code>async function raceLap(driver: Driver): Promise&lt;LapResult&gt; {{ '{' }}
+  if (driver.needsPitStop()) {{ '{' }}
     // Driver pits, but the race continues asynchronously
     await pitStop(driver);
-  }
+  {{ '}' }}
   return driver.completeLap();
-}
+{{ '}' }}
 
 // All drivers race simultaneously - just like Promise.all()!
 const results = await Promise.all(
@@ -128,27 +128,27 @@ console.log('Race continues while pit stops happen! 🏁');</code></pre>
               <span class="text-2xl">🎯</span>
               DRS-Inspired Cache Implementation
             </h3>
-            <pre class="code-block"><code>class DRSCache {
+            <pre class="code-block"><code>class DRSCache {{ '{' }}
   private cache = new Map&lt;string, CacheEntry&gt;();
   private readonly TTL = 1000; // 1 second, just like DRS gap!
   
-  get(key: string): any | null {
+  get(key: string): any | null {{ '{' }}
     const cached = this.cache.get(key);
-    if (cached && Date.now() - cached.timestamp < this.TTL) {
+    if (cached && Date.now() - cached.timestamp < this.TTL) {{ '{' }}
       console.log('🚀 DRS activated! Cache hit!');
       return cached.value;
-    }
+    {{ '}' }}
     console.log('❌ Too far behind, no boost');
     return null;
-  }
+  {{ '}' }}
   
-  set(key: string, value: any): void {
-    this.cache.set(key, {
+  set(key: string, value: any): void {{ '{' }}
+    this.cache.set(key, {{ '{' }}
       value,
       timestamp: Date.now()
-    });
-  }
-}</code></pre>
+    {{ '}' }});
+  {{ '}' }}
+{{ '}' }}</code></pre>
           </div>
         </section>
 
@@ -200,24 +200,24 @@ console.log('Race continues while pit stops happen! 🏁');</code></pre>
             </p>
             
             <div class="code-section">
-              <pre class="code-block"><code>class RaceEngineer {
-  constructor(private driver: Driver) {
+              <pre class="code-block"><code>class RaceEngineer {{ '{' }}
+  constructor(private driver: Driver) {{ '{' }}
     this.telemetry = new TelemetryStream();
     
     // Continuous monitoring - just like APM tools!
-    this.telemetry.on('high-tire-temp', () => {
+    this.telemetry.on('high-tire-temp', () => {{ '{' }}
       this.radio.send('⚠️ Manage your tires! Deg is high!');
-    });
+    {{ '}' }});
     
-    this.telemetry.on('fuel-critical', () => {
+    this.telemetry.on('fuel-critical', () => {{ '{' }}
       this.radio.send('🚨 Lift and coast, fuel critical!');
-    });
+    {{ '}' }});
     
-    this.telemetry.on('gap-closing', () => {
+    this.telemetry.on('gap-closing', () => {{ '{' }}
       this.radio.send('📻 Gap to car behind: 1.2 seconds');
-    });
-  }
-}
+    {{ '}' }});
+  {{ '}' }}
+{{ '}' }}
 
 // In web dev terms:
 logger.error('Memory usage critical!');    // "Box, box, box!"
