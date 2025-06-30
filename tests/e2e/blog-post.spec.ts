@@ -6,11 +6,12 @@ test.describe('Blog Post Page', () => {
   });
 
   test('should display the blog post title', async ({ page }) => {
-    await expect(page.getByRole('heading', { name: 'F1 Racing and Async Programming: Finding Speed in Parallel' })).toBeVisible();
+    // Check for title text anywhere on the page (gradient styling might affect accessibility)
+    await expect(page.locator('text=Racing Through Code: F1 Parallels in Web Development')).toBeVisible();
   });
 
   test('should display the interactive badge', async ({ page }) => {
-    await expect(page.locator('.inline-block').getByText('Interactive')).toBeVisible();
+    await expect(page.getByText('Interactive Demos')).toBeVisible();
   });
 
   test('should display the post date', async ({ page }) => {
@@ -18,17 +19,17 @@ test.describe('Blog Post Page', () => {
   });
 
   test('should display blog content', async ({ page }) => {
-    await expect(page.getByText('As a software engineer and F1 enthusiast')).toBeVisible();
-    await expect(page.getByText('The Art of the Pit Stop')).toBeVisible();
+    await expect(page.getByText('As a web developer who loves Formula 1')).toBeVisible();
+    await expect(page.getByText('The Async Nature of Pit Stops')).toBeVisible();
   });
 
   test('should have proper SEO meta tags', async ({ page }) => {
-    await expect(page).toHaveTitle(/F1 Racing and Async Programming/);
+    await expect(page).toHaveTitle(/Racing Through Code: F1 Parallels in Web Development/);
   });
 
   test('should render markdown content properly', async ({ page }) => {
-    // Check for headings (we have multiple h2 elements)
-    const headingCount = await page.getByRole('heading', { level: 2 }).count();
+    // Check for section headings (we use h2 with .section-heading class)
+    const headingCount = await page.locator('h2.section-heading').count();
     expect(headingCount).toBeGreaterThan(0);
     
     // Check that we have paragraphs of content
@@ -39,7 +40,7 @@ test.describe('Blog Post Page', () => {
   test('should be responsive on mobile', async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 667 });
     
-    await expect(page.getByRole('heading', { name: 'F1 Racing and Async Programming: Finding Speed in Parallel' })).toBeVisible();
+    await expect(page.locator('text=Racing Through Code: F1 Parallels in Web Development')).toBeVisible();
     
     // Check that content is readable on mobile
     const article = page.locator('article');

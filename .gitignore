@@ -95,3 +95,4 @@ playwright/.cache/
 # Screenshots from tests
 debug-homepage.png
 *.png
+.vercel

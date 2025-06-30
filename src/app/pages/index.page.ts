@@ -61,8 +61,8 @@ export default class HomePage {
   posts = [
     {
       slug: 'f1-parallels',
-      title: 'F1 Racing and Async Programming: Finding Speed in Parallel',
-      description: 'Exploring how Formula 1 racing strategies mirror asynchronous programming concepts, from pit stops to race management.',
+      title: 'Racing Through Code: F1 Parallels in Web Development',
+      description: 'Discovering surprising parallels between Formula 1 racing and web development - from async pit stops to caching DRS zones, team radio observability, and marginal gains philosophy.',
       date: new Date('2024-01-15'),
       interactive: true
     }

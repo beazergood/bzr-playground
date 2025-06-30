@@ -29,7 +29,7 @@ test.describe('Homepage', () => {
     expect(hasPostCard || hasEmptyState).toBeTruthy();
     
     if (hasPostCard) {
-      await expect(page.getByText('F1 Racing and Async Programming')).toBeVisible();
+      await expect(page.locator('text=Racing Through Code')).toBeVisible();
       await expect(page.getByText('Interactive')).toBeVisible();
     }
   });
@@ -42,7 +42,7 @@ test.describe('Homepage', () => {
     
     if (hasPostCard) {
       // Click on the F1 blog post
-      await page.getByText('F1 Racing and Async Programming').click();
+      await page.locator('text=Racing Through Code').click();
       
       // Should navigate to blog post page
       await expect(page).toHaveURL('/blog/f1-parallels');
