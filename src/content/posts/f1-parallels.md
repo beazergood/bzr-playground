@@ -1,6 +1,6 @@
 ---
 title: "F1 Racing and Async Programming: Finding Speed in Parallel"
-date: 2024-01-15
+date: 2025-06-30
 description: "Exploring how Formula 1 racing strategies mirror asynchronous programming concepts, from pit stops to race management."
 tags: ["javascript", "async", "f1", "programming"]
 interactive: true
