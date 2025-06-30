@@ -289,7 +289,7 @@ monitoring.warn('High CPU usage');         // "Lift and coast!"</code></pre>
             </div>
 
             <p class="text-lg mt-8 text-center italic">
-              So next time you're debugging async code while watching F1, remember - you're not just procrastinating, you're observing parallel optimization strategies in action! 🏎️💨
+              So next time you're debugging async code while watching F1, remember - you're not just procrastinating, you're observing parallel optimization strategies in action! 🏎️
             </p>
           </div>
         </section>
